@@ -96,5 +96,10 @@
 {"id":96,"first_name":"Friedrich","last_name":"Telford","email":"ftelford2n@google.nl","gender":"Female"},
 {"id":97,"first_name":"Alisha","last_name":"Kemmet","email":"akemmet2o@paginegialle.it","gender":"Bigender"},
 {"id":98,"first_name":"Brady","last_name":"Corbally","email":"bcorbally2p@ustream.tv","gender":"Male"},
-{"id":99,"first_name":"Kirsteni","last_name":"Cocks","email":"kcocks2q@deviantart.com","gender":"Genderfluid"},
-{"id":100,"first_name":"Giff","last_name":"Domengue","email":"gdomengue2r@oaic.gov.au","gender":"Agender"}]
+{
+"young":{"id":99,"first_name":"Kirsteni","last_name":"Cocks","email":"kcocks2q@deviantart.com","gender":"Genderfluid"}
+},
+{
+"old":{"id":100,"first_name":"Giff","last_name":"Domengue","email":"gdomengue2r@oaic.gov.au","gender":"Agender"}
+}
+]
