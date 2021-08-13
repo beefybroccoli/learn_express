@@ -121,30 +121,27 @@ const path_parameter_ = "/get/:id";
 console.log("============================================");
 app.get(path_parameter_, cb_response_id, cb_error_handling);
 
-app.get(
-  "/item/:id",
-  (req, res, next) => {
-    console.log(req.params.id);
-    let user = Number(req.params.id);
-    console.log(user);
-    console.log(data[user]);
-    res.send(data[user]);
-    next();
-  },
-  (req, res) => console.log("Did you get the right data?")
+app.get('/item/:id', (req, res, next) => {
+  console.log(req.params.id);
+  let user = Number(req.params.id);
+  console.log(user);
+  console.log(data[user]);
+  res.send(data[user]);
+  next();
+}, (req, res) =>
+  console.log('Did you get the right data?')
 );
 
-app
-  .route("/item")
+app.route('/item')
   .get((req, res) => {
-    //res.download('images/rocket.jpg')
-    //res.redirect('http://www.linkedin.com')
-    //res.end()
-    res.send(`a get request with /item route on port ${PORT}`);
+      //res.download('images/rocket.jpg')
+      //res.redirect('http://www.linkedin.com')
+      //res.end()
+      res.send(`a get request with /item route on port ${PORT}`)
   })
   .put((req, res) =>
-    res.send(`a put request with /newItem route on port ${PORT}`)
+      res.send(`a put request with /newItem route on port ${PORT}`)
   )
   .delete((req, res) =>
-    res.send(`a delete request with /item route on port ${PORT}`)
-  );
+      res.send(`a delete request with /item route on port ${PORT}`)
+);
