@@ -4,13 +4,45 @@ import data from "./data/MOCK_DATA.json";
 const app = express();
 const PORT = 3000;
 
-//load a static file from public folder with "/" path
-app.use(express.static("public"));
-//visit http://localhost:3000/tent.jpg to load tend.jpg
+/*
+    JSON data
+        {"hello":"JSON is cool"}
 
-//load a static file from images folder with "/images" path
+    URLEncoded data
+        hello=JSON+is+cool
+*/
+/*--------------------------------------------------------------
+    method to use JSON
+*/
+app.use(express.json());
+
+app.post("/newjson", (req, rep) => {
+  console.log(req.body);
+  rep.send(req.body);
+});
+
+/*--------------------------------------------------------------
+    URLEncoded method
+    {extended:true} set stringify to true
+*/
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/newurlencoded", (req, rep) => {
+  console.log(req.body);
+  rep.send(req.body);
+});
+
+/*----------------------------------------------------------------
+    load a static file from public folder with "/" path
+    visit http://localhost:3000/tent.jpg to load tend.jpg
+*/
+app.use(express.static("public"));
+
+/*-----------------------------------------------------------------
+    load a static file from images folder with "/images" path
+    visit http://localhost:3000/images/rocket.jpg to load rocket.jpg
+*/
 app.use("/images", express.static("images"));
-//visit http://localhost:3000/images/rocket.jpg to load rocket.jpg
 
 //--------------route for getting data-----------------
 app.get(
@@ -105,9 +137,17 @@ app.get("/error", (req, response) => {
   response.redirect("https://www.google.com");
 });
 
+/*------------------------------------------------------------
+    Use route to group together multiple methods per path
+    Below use route to group 4 methods for "/user" path
+*/
 app
   .route("/user")
   .get((req, rep) => {
+    // start middleware
+    console.log(`original request url = ${req.originalUrl}`);
+    console.log(`original request method = ${req.method}`);
+    //end middleware
     rep.send(`a get request with /user route on port ${PORT}`);
   })
   .put((req, rep) => {
@@ -125,3 +165,5 @@ app.listen(PORT, () => {
   console.log("express-app-sample at port ", PORT);
   //   console.log(data);
 });
+
+//middleware are any code that happen before response.send code.
