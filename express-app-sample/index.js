@@ -39,13 +39,13 @@ app.post("/newItem", (req, rep) => {
 });
 
 //--------------route for put data-----------------
-app.put("/item", (req, rep) => {
-  rep.send(`a put request with /item route on port ${PORT}`);
+app.put("/putitem", (req, rep) => {
+  rep.send(`a put request with /putitem route on port ${PORT}`);
 });
 
 //--------------route for delete data-----------------
-app.delete("/item", (req, rep) => {
-  rep.send(`a delete request with /item route on port ${PORT}`);
+app.delete("/deleteitem", (req, rep) => {
+  rep.send(`a delete request with /deleteitem route on port ${PORT}`);
 });
 
 //--------------------------------------------------
@@ -104,6 +104,21 @@ app.get(
 app.get("/error", (req, response) => {
   response.redirect("https://www.google.com");
 });
+
+app
+  .route("/user")
+  .get((req, rep) => {
+    rep.send(`a get request with /user route on port ${PORT}`);
+  })
+  .put((req, rep) => {
+    rep.send(`a put request with /user route on port ${PORT}`);
+  })
+  .delete((req, rep) => {
+    rep.send(`a delete request with /user route on port ${PORT}`);
+  })
+  .post((req, rep) => {
+    rep.send(`a post request with /user route on port ${PORT}`);
+  });
 
 //---------start the app----------------------------
 app.listen(PORT, () => {
