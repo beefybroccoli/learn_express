@@ -1,14 +1,9 @@
 var express = require("../../");
 
-// var app = express();
-var app = (module.exports = express());
+var app = express();
 
-app.get("/", function (req, response) {
-  response.send("Hello World");
-});
-
-app.get("/contact", function (req, response) {
-  response.render("contact page");
+app.get("/", function (req, res) {
+  res.send("Hello World");
 });
 
 /* istanbul ignore next */

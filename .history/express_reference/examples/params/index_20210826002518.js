@@ -50,7 +50,7 @@ application.param(
   //second paramter
   function (request, res, next, id) {
     if ((request.user = users[id])) {
-      next();
+      // next();
     } else {
       next(helper_createError(404, "failed to find user"));
     }

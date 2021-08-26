@@ -38,11 +38,7 @@ application.param(
   }
 );
 
-//---------------------------------------------------------
 // Load user by id
-
-//visit http://localhost:4015/user/1
-//return "user tobi"
 
 application.param(
   //first parameter
@@ -83,7 +79,7 @@ application.get(
   "/user/:user",
   //second parameter
   function (request, response, next) {
-    response.send("line 86 user " + request.user.name);
+    response.send("user " + request.user.name);
   }
 );
 

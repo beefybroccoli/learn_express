@@ -38,7 +38,7 @@ app.get("/", function (req, response) {
 
 // or you could write a tiny middleware like this to add a layer of abstraction and make things a bit more declarative:
 
-function cb_format(path) {
+function format(path) {
   //create a temp object from input_path
   var temp_object = require(path);
   return function (req, response) {
@@ -46,7 +46,7 @@ function cb_format(path) {
   };
 }
 
-app.get("/users", cb_format("./users"));
+app.get("/users", format("./users"));
 
 //=========start the app====================
 /* istanbul ignore next */

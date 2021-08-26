@@ -7,8 +7,8 @@ app.get("/", function (req, response) {
   response.send("Hello World");
 });
 
-app.get("/contact", function (req, response) {
-  response.render("contact page");
+app.param("/contact", function (req, response) {
+  response.send("contact page");
 });
 
 /* istanbul ignore next */

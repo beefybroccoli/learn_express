@@ -8,7 +8,7 @@ app.get("/", function (req, response) {
 });
 
 app.get("/contact", function (req, response) {
-  response.render("contact page");
+  response.send("contact page");
 });
 
 /* istanbul ignore next */

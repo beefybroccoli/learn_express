@@ -16,7 +16,7 @@ var users = [
 
 // Create HTTP error
 
-function helper_createError(status, message) {
+function cb_createError(status, message) {
   var err = new Error(message);
   err.status = status;
   return err;
@@ -31,18 +31,14 @@ application.param(
   function (request, res, next, number, name) {
     request.params[name] = parseInt(number, 10);
     if (isNaN(request.params[name])) {
-      next(helper_createError(400, "failed to parseInt " + number));
+      next(cb_createError(400, "failed to parseInt " + number));
     } else {
       next();
     }
   }
 );
 
-//---------------------------------------------------------
 // Load user by id
-
-//visit http://localhost:4015/user/1
-//return "user tobi"
 
 application.param(
   //first parameter
@@ -52,18 +48,14 @@ application.param(
     if ((request.user = users[id])) {
       next();
     } else {
-      next(helper_createError(404, "failed to find user"));
+      next(cb_createError(404, "failed to find user"));
     }
   }
 );
 
-//--------------------------------------------------------
 /**
  * GET index.
  */
-
-// visit : http://localhost:4015/
-// get   "Visit /user/0 or /users/0-2"
 
 application.get(
   //first parameter
@@ -83,7 +75,7 @@ application.get(
   "/user/:user",
   //second parameter
   function (request, response, next) {
-    response.send("line 86 user " + request.user.name);
+    response.send("user " + request.user.name);
   }
 );
 

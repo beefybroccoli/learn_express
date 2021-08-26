@@ -83,7 +83,7 @@ application.get(
   "/user/:user",
   //second parameter
   function (request, response, next) {
-    response.send("line 86 user " + request.user.name);
+    response.send("user " + request.user.name);
   }
 );
 
