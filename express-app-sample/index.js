@@ -195,3 +195,6 @@ app.listen(PORT, () => {
 });
 
 //middleware are any code that happen before response.send code.
+/*
+    DEBUG=express:* node index.js
+*/
