@@ -1,5 +1,7 @@
 import express from "express";
 import data from "./data/MOCK_DATA.json";
+import favicon from "serve-favicon";
+import path from "path";
 
 const app = express();
 const PORT = 3000;
@@ -38,6 +40,11 @@ app.post("/newurlencoded", (req, rep) => {
 */
 app.use(express.static("public"));
 
+/*-------------------------------------------------------------------
+
+*/
+app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
+
 /*-----------------------------------------------------------------
     load a static file from images folder with "/images" path
     visit http://localhost:3000/images/rocket.jpg to load rocket.jpg
@@ -47,8 +54,8 @@ app.use("/images", express.static("images"));
 //--------------route for getting data-----------------
 app.get(
   "/",
-  (req, response) => {
-    response.send(`a get request with / route on port ${PORT}`);
+  (req, response, next) => {
+    // response.send(`a get request with / route on port ${PORT}`);
     //visit localhost:3000
     //receive "a get request with / route on port 3000"
 
@@ -148,7 +155,7 @@ app
     console.log(`original request url = ${req.originalUrl}`);
     console.log(`original request method = ${req.method}`);
     //end middleware
-    throw new Error();
+    // throw new Error();
     rep.send(`a get request with /user route on port ${PORT}`);
   })
   .put((req, rep) => {
@@ -167,7 +174,7 @@ app
 */
 app.use((error, request, response, next) => {
   //print out error.stack
-  console.log(error.stack);
+  //   console.log(error.stack);
   //return error code
   response.status(500).send(`Red alert! Error occured on port ${PORT}`);
 });
