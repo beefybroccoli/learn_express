@@ -71,7 +71,7 @@ function cb_authenticate(name, pass, cb_function) {
   hash(
     { password: pass, salt: user.salt },
     //start anynomous function
-    function (err, pass, salt, hash) {
+    (err, pass, salt, hash) => {
       if (err) return cb_function(err);
       if (hash === user.hash) return cb_function(null, user);
       cb_function(new Error("invalid password"));

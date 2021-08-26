@@ -39,10 +39,10 @@ app.get("/", function (req, response) {
 // or you could write a tiny middleware like this to add a layer of abstraction and make things a bit more declarative:
 
 function format(path) {
-  //create a temp object from input_path
-  var temp_object = require(path);
+  //create a temp object from 
+  var obj = require(path);
   return function (req, response) {
-    response.format(temp_object);
+    response.format(obj);
   };
 }
 

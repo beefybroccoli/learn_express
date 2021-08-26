@@ -2,7 +2,8 @@ var express = require("../../");
 var app = (module.exports = express());
 var users = require("./db");
 
-// so either you can deal with different types of formatting for expected response in index.js
+// so either you can deal with different types of formatting
+// for expected response in index.js
 app.get("/", function (req, response) {
   response.format(
     //start object
@@ -33,22 +34,22 @@ app.get("/", function (req, response) {
         response.json(users);
       },
     } //end object
-  ); //end response.format()
+  );
 });
 
-// or you could write a tiny middleware like this to add a layer of abstraction and make things a bit more declarative:
+// or you could write a tiny middleware like
+// this to add a layer of abstraction
+// and make things a bit more declarative:
 
 function format(path) {
-  //create a temp object from input_path
-  var temp_object = require(path);
-  return function (req, response) {
-    response.format(temp_object);
+  var obj = require(path);
+  return function (req, res) {
+    res.format(obj);
   };
 }
 
 app.get("/users", format("./users"));
 
-//=========start the app====================
 /* istanbul ignore next */
 if (!module.parent) {
   app.listen(4002);

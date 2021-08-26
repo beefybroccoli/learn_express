@@ -60,7 +60,7 @@ hash(
 
 // Authenticate using our plain-object database of doom!
 
-function cb_authenticate(name, pass, cb_function) {
+const cb_authenticate(name, pass, cb_function) {
   if (!module.parent) console.log("authenticating %s:%s", name, pass);
   var user = users[name];
   // query the db for the given username
