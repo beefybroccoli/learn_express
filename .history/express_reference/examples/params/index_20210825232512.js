@@ -57,47 +57,31 @@ application.param(
  * GET index.
  */
 
-application.get(
-  //first parameter
-  "/",
-  //second parameter
-  function (req, response) {
-    response.send("Visit /user/0 or /users/0-2");
-  }
-);
+application.get("/", function (req, response) {
+  response.send("Visit /user/0 or /users/0-2");
+});
 
 /**
  * GET :user.
  */
 
-application.get(
-  //first parameter
-  "/user/:user",
-  //second parameter
-  function (request, response, next) {
-    response.send("user " + request.user.name);
-  }
-);
+application.get("/user/:user", function (request, response, next) {
+  response.send("user " + request.user.name);
+});
 
 /**
  * GET users :from - :to.
  */
 
-application.get(
-  //first parameter
-  "/users/:from-:to",
-  //second parameter
-  function (request, response, next) {
-    var from = request.params.from;
-    var to = request.params.to;
-    var names = users.map(function (user) {
-      return user.name;
-    });
-    response.send("users " + names.slice(from, to + 1).join(", "));
-  }
-);
+application.get("/users/:from-:to", function (request, response, next) {
+  var from = request.params.from;
+  var to = request.params.to;
+  var names = users.map(function (user) {
+    return user.name;
+  });
+  response.send("users " + names.slice(from, to + 1).join(", "));
+});
 
-//==========start application============================================
 /* istanbul ignore next */
 if (!module.parent) {
   //port 4015, params - Working with route parameters

@@ -97,7 +97,6 @@ application.get(
   }
 );
 
-//==========start application============================================
 /* istanbul ignore next */
 if (!module.parent) {
   //port 4015, params - Working with route parameters

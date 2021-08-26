@@ -83,21 +83,15 @@ application.get(
  * GET users :from - :to.
  */
 
-application.get(
-  //first parameter
-  "/users/:from-:to",
-  //second parameter
-  function (request, response, next) {
-    var from = request.params.from;
-    var to = request.params.to;
-    var names = users.map(function (user) {
-      return user.name;
-    });
-    response.send("users " + names.slice(from, to + 1).join(", "));
-  }
-);
+application.get("/users/:from-:to", function (request, response, next) {
+  var from = request.params.from;
+  var to = request.params.to;
+  var names = users.map(function (user) {
+    return user.name;
+  });
+  response.send("users " + names.slice(from, to + 1).join(", "));
+});
 
-//==========start application============================================
 /* istanbul ignore next */
 if (!module.parent) {
   //port 4015, params - Working with route parameters
