@@ -1,0 +1,6 @@
+
+//env - compile code
+//stage-0 - run when code get modified
+{
+    "presets":["env","stage-0"]
+}
